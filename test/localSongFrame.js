@@ -36,10 +36,11 @@ describe('LocalSongFrame', function() {
     it('should generate instance from frame', function () {
       var song = new LocalSongFrame(test.meta, test.image);
       var frame = song.toFrame();
-      var newSong = LocalSongFrame.fromFrame(frame);
-
-      JSON.stringify(newSong.meta).should.equal(JSON.stringify(test.meta));
-      newSong.image.should.equal(test.image);
+      LocalSongFrame.fromFrame(frame, (err, newSong) => {
+        err.should.equal(null);
+        JSON.stringify(newSong.meta).should.equal(JSON.stringify(test.meta));
+        newSong.image.should.equal(test.image);
+      });
     });
   });
   describe('fromFramePipe', function () {

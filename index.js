@@ -25,12 +25,24 @@ class LocalSongFrame {
     return stream;
   }
 
-  static fromFrame (frame) {
-    var metaBufferLength = frame.read(8).readDoubleBE(0);
-    var imageBufferLength = frame.read(8).readDoubleBE(0);
-    var meta = JSON.parse(frame.read(metaBufferLength).toString());
-    var image = frame.read(imageBufferLength);
-    return new LocalSongFrame(meta, image);
+  static fromFrame (frame, callback) {
+    var bufferList = [];
+    frame.on('data', (chunk) => {
+      bufferList.push(chuck);
+    });
+
+    frame.on('err', (err) => {
+      callback(err);
+    })
+
+    frame.on('end', () => {
+      var buffer = Buffer.concat(bufferList);
+      var metaBufferLength = buffer.slice(0,8).readDoubleBE(0);
+      var imageBufferLength = buffer.slice(8,16).readDoubleBE(0);
+      var meta = JSON.parse(buffer.slice(16,16 + metaBufferLength).toString());
+      var image = buffer.slice(16 + metaBufferLength);
+      callback(null, new LocalSongFrame(meta, image));
+    })
   }
 
   static fromFramePipe (frame) {
