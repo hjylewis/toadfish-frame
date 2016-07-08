@@ -28,7 +28,7 @@ class LocalSongFrame {
   static fromFrame (frame, callback) {
     var bufferList = [];
     frame.on('data', (chunk) => {
-      bufferList.push(chuck);
+      bufferList.push(chunk);
     });
 
     frame.on('err', (err) => {
