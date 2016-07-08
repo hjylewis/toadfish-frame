@@ -1,0 +1,23 @@
+{
+  "name": "toadfish-frame",
+  "version": "1.0.0",
+  "description": "API for message frame for toadfish local songs",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hjylewis/toadfish-frame.git"
+  },
+  "author": "Henry Lewis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hjylewis/toadfish-frame/issues"
+  },
+  "homepage": "https://github.com/hjylewis/toadfish-frame#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.5.3"
+  }
+}
